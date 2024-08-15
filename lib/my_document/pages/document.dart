@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/my_document/widgets/block.dart';
 import '../models/block.dart';
 import '../repositories/document_repository.dart';
+import '../utils/format_date.dart';
 
 class MyDocumentPage extends StatefulWidget {
   const MyDocumentPage({super.key});
@@ -31,6 +32,7 @@ class _MyDocumentPageState extends State<MyDocumentPage> {
   @override
   Widget build(BuildContext context) {
     var (title, :modified) = document.getMetadata();
+    var formattedModifiedDate = formatDate(modified); // New
 
     return Scaffold(
         backgroundColor: Colors.grey[200],
@@ -43,7 +45,7 @@ class _MyDocumentPageState extends State<MyDocumentPage> {
               ? const CircularProgressIndicator()
               : Column(
                   children: [
-                    Text('Last modified $modified'),
+                    Text('Last modified $formattedModifiedDate'),
                     Expanded(
                         child: ListView.builder(
                             itemCount: blocks.length,
