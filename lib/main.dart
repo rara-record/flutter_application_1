@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/favorite.dart';
-import 'package:flutter_application_1/pages/generator_word.dart';
-import 'package:flutter_application_1/state/word.dart';
+import 'package:flutter_application_1/word/pages/favorite.dart';
+import 'package:flutter_application_1/word/pages/generator_word.dart';
+import 'package:flutter_application_1/word/states/word.dart';
 import 'package:provider/provider.dart';
 
 void main() {
