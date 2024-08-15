@@ -45,23 +45,33 @@ class MyAppState extends ChangeNotifier {
   }
 }
 
-// stateless: 변경 가능한 자체 상태를 포함하지 않고, 스스로 변경할 수 없으며 MyAppState를 거쳐야한다.
 class MyHomePage extends StatefulWidget {
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  var selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Row(
-      children: [
-        Expanded(
-          flex: 1,
-          child: SafeArea(
+    Widget page;
+    switch (selectedIndex) {
+      case 0:
+        page = GeneratorPage();
+      case 1:
+        page = Placeholder();
+      default:
+        throw UnimplementedError('no widghet for $selectedIndex');
+    }
+
+    return LayoutBuilder(builder: (context, constraints) {
+      return Scaffold(
+          body: Row(
+        children: [
+          SafeArea(
             child: NavigationRail(
-              extended: false,
+              extended: constraints.maxWidth >= 600,
               destinations: [
                 NavigationRailDestination(
                   icon: Icon(Icons.home),
@@ -72,21 +82,23 @@ class _MyHomePageState extends State<MyHomePage> {
                   label: Text('Favorites'),
                 ),
               ],
-              selectedIndex: 0,
+              selectedIndex: selectedIndex,
               onDestinationSelected: (value) {
-                print('selected: $value');
+                setState(() {
+                  selectedIndex = value;
+                });
               },
             ),
           ),
-        ),
-        Expanded(
-            flex: 2,
-            child: Container(
-              color: Theme.of(context).colorScheme.primaryContainer,
-              child: GeneratorPage(),
-            ))
-      ],
-    ));
+          Expanded(
+              flex: 2,
+              child: Container(
+                color: Theme.of(context).colorScheme.primaryContainer,
+                child: page,
+              ))
+        ],
+      ));
+    });
   }
 }
 
