@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/state/word.dart';
-import 'package:flutter_application_1/widgets/bigcard.dart';
+import 'package:flutter_application_1/word/states/word.dart';
+import 'package:flutter_application_1/word/widgets/bigcard.dart';
 import 'package:provider/provider.dart';
 
 class GeneratorWordPage extends StatelessWidget {
