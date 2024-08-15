@@ -12,6 +12,10 @@ class _SignupFormState extends State<SignUpForm> {
   final _lastNameTextController = TextEditingController();
   final _usernameTextController = TextEditingController();
 
+  void _showWelcomeScreen() {
+    Navigator.of(context).pushNamed('/home');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -53,7 +57,7 @@ class _SignupFormState extends State<SignUpForm> {
                     : Colors.blue;
               }),
             ),
-            onPressed: null,
+            onPressed: _showWelcomeScreen,
             child: const Text('Sign up'),
           ),
         ],

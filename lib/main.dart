@@ -3,6 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:flutter_application_1/signup/pages/signup.dart';
 import 'package:flutter_application_1/word/states/word.dart';
 
+import 'word/pages/home.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -22,7 +24,7 @@ class MyApp extends StatelessWidget {
         ),
         routes: {
           '/': (context) => SignUpPage(),
-          // 'home': (context) => MyHomePage(),
+          '/home': (context) => MyHomePage(),
         },
       ),
     );
