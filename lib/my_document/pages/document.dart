@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
-
-import '../data.dart';
+import 'package:flutter_application_1/my_document/widgets/block.dart';
+import '../repositories/document_repository.dart';
 
 class MyDocumentPage extends StatelessWidget {
   const MyDocumentPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // var record = getMetadata();
-    // var (title, modified: localModified) = getMetadata();
-
-    var (title, :modified) = getMetadata();
+    final document = Document();
+    var (title, :modified) = document.getMetadata();
+    var blocks = document.getBlocks();
 
     return Scaffold(
       backgroundColor: Colors.grey[200],
@@ -18,8 +17,16 @@ class MyDocumentPage extends StatelessWidget {
         // title: Text(record.$1),
         title: Text(title),
       ),
-      body: Center(
-        child: Text('Last modified $modified'),
+      body: Column(
+        children: [
+          Text('Last modified $modified'),
+          Expanded(
+              child: ListView.builder(
+                  itemCount: blocks.length,
+                  itemBuilder: (context, index) {
+                    return BlockWidget(block: blocks[index]);
+                  }))
+        ],
       ),
     );
   }
