@@ -15,7 +15,8 @@ class _SignupFormState extends State<SignUpForm> {
   final _usernameTextController = TextEditingController();
 
   void _showWelcomeScreen() {
-    Navigator.of(context).pushNamed('/home');
+    // Navigator.of(context).pushNamed('/home');
+    Navigator.of(context).pushNamed('/document');
   }
 
   double _formProgress = 0;

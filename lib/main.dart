@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/my_document/pages/document.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_application_1/signup/pages/signup.dart';
 import 'package:flutter_application_1/word/states/word.dart';
@@ -24,7 +25,8 @@ class MyApp extends StatelessWidget {
         ),
         routes: {
           '/': (context) => SignUpPage(),
-          '/home': (context) => MyHomePage(),
+          // '/home': (context) => MyHomePage(),
+          '/document': (context) => MyDocumentPage(),
         },
       ),
     );
