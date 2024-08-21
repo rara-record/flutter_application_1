@@ -10,7 +10,7 @@ class FavoritePage extends StatelessWidget {
     var appState = context.watch<Word>();
 
     if (appState.favorites.isEmpty) {
-      return Center(
+      return const Center(
         child: Text('No favorites yet'),
       );
     }
@@ -23,7 +23,7 @@ class FavoritePage extends StatelessWidget {
         ),
         ...appState.favorites.map(
           (word) => ListTile(
-            leading: Icon(Icons.favorite),
+            leading: const Icon(Icons.favorite),
             title: Text(word.asLowerCase),
           ),
         ),

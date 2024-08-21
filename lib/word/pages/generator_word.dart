@@ -4,6 +4,8 @@ import 'package:flutter_application_1/word/widgets/bigcard.dart';
 import 'package:provider/provider.dart';
 
 class GeneratorWordPage extends StatelessWidget {
+  const GeneratorWordPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     var appState = context.watch<Word>();
@@ -21,7 +23,7 @@ class GeneratorWordPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           BigCard(pair: pair),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Row(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -30,12 +32,12 @@ class GeneratorWordPage extends StatelessWidget {
                     appState.toggleFavorite();
                   },
                   icon: Icon(icon),
-                  label: Text('Like')),
+                  label: const Text('Like')),
               ElevatedButton.icon(
                   onPressed: () {
                     appState.getNext();
                   },
-                  label: Text('Next'))
+                  label: const Text('Next'))
             ],
           ),
         ],

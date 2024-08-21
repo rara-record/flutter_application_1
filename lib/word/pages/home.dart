@@ -3,6 +3,8 @@ import 'package:flutter_application_1/word/pages/favorite.dart';
 import 'package:flutter_application_1/word/pages/generator_word.dart';
 
 class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
+
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
@@ -21,9 +23,9 @@ class _MyHomePageState extends State<MyHomePage> {
     Widget page;
     switch (selectedIndex) {
       case 0:
-        page = GeneratorWordPage();
+        page = const GeneratorWordPage();
       case 1:
-        page = FavoritePage();
+        page = const FavoritePage();
       default:
         throw UnimplementedError('no widghet for $selectedIndex');
     }
@@ -31,16 +33,16 @@ class _MyHomePageState extends State<MyHomePage> {
     return LayoutBuilder(builder: (context, constraints) {
       return Scaffold(
         appBar: AppBar(
-          title: Text('Namer App'),
+          title: const Text('Namer App'),
         ),
         body: page,
         drawer: Drawer(
           child: ListView(
-            padding: EdgeInsets.symmetric(vertical: 70),
+            padding: const EdgeInsets.symmetric(vertical: 70),
             children: [
               ListTile(
-                leading: Icon(Icons.home),
-                title: Text('home'),
+                leading: const Icon(Icons.home),
+                title: const Text('home'),
                 selected: selectedIndex == 0,
                 onTap: () {
                   _onItemTapped(0);
@@ -48,8 +50,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
               ),
               ListTile(
-                leading: Icon(Icons.favorite),
-                title: Text('favorite'),
+                leading: const Icon(Icons.favorite),
+                title: const Text('favorite'),
                 selected: selectedIndex == 1,
                 onTap: () {
                   _onItemTapped(1);

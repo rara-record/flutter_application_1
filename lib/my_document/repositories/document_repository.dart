@@ -18,17 +18,18 @@ class Document {
         }) {
       return (title, modified: DateTime.parse(localModified));
     } else {
-      throw const FormatException('Unexpected JSON');
+      throw const FormatException('Invalid JSON');
     }
   }
 
   // getBlocks()는 JSON을 Block 클래스의 인스턴스로 파싱하고 블록 목록을 반환하여 UI에 렌더링합니다.
   Future<List<Block>> getBlocks() async {
     await Future.delayed(const Duration(seconds: 1));
-    if (_json case {'blocks': List blocksJson}) {
-      return [for (var blockJson in blocksJson) Block.fromJson(blockJson)];
+
+    if (_json case {'blocks': List blocks}) {
+      return blocks.map((block) => Block.fromJson(block)).toList();
     } else {
-      throw const FormatException('Unexpected JSON format');
+      throw const FormatException('Invalid JSON');
     }
   }
 }

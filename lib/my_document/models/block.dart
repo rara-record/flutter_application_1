@@ -1,16 +1,36 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import "package:flutter/foundation.dart";
 
-part 'block.freezed.dart'; // 이 줄이 필요합니다.
-part 'block.g.dart';
+part 'block.freezed.dart';
+// part 'block.g.dart';
 
 @freezed
 class Block with _$Block {
-  const factory Block({
-    required String type,
+  const factory Block.headerBlock({
     required String text,
-    String? checked,
-  }) = _Block;
+  }) = HeaderBlock;
 
-  factory Block.fromJson(Map<String, dynamic> json) => _$BlockFromJson(json);
+  const factory Block.paragraphBlock({
+    required String text,
+  }) = ParagraphBlock;
+
+  const factory Block.checkboxBlock({
+    required String text,
+    required bool isChecked,
+  }) = CheckboxBlock;
+
+  factory Block.fromJson(Map<String, dynamic> json) {
+    switch (json['type']) {
+      case 'h1':
+        return Block.headerBlock(text: json['text'] as String);
+      case 'p':
+        return Block.paragraphBlock(text: json['text'] as String);
+      case 'checkbox':
+        return Block.checkboxBlock(
+          text: json['text'] as String,
+          isChecked: json['checked'] as bool,
+        );
+      default:
+        throw const FormatException('Unexpected JSON format');
+    }
+  }
 }
